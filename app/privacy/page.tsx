@@ -8,7 +8,7 @@ export default function PrivacyPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-3xl font-bold">Privacy Policy</h1>
-      <p className="mt-2 text-sm text-slate-500">Last updated: March 26, 2026</p>
+      <p className="mt-2 text-sm text-slate-500">Last updated: March 28, 2026</p>
 
       <div className="mt-8 space-y-6 text-slate-700 dark:text-slate-300 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-slate-900 dark:[&_h2]:text-white">
         <h2>1. Information We Collect</h2>
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         <p>We use your information to:</p>
         <ul className="list-disc space-y-1 pl-6">
           <li>Authenticate you and maintain your session</li>
-          <li>List your existing Google Slides presentations so you can select one to edit</li>
+          <li>Show the Google Slides presentations you choose to share with us so you can select one to edit</li>
           <li>Create, edit, and manage Google Slides presentations via the Google Slides API</li>
           <li>Track usage to enforce account limits</li>
           <li>Improve and maintain the service</li>
@@ -48,22 +48,20 @@ export default function PrivacyPage() {
         </p>
 
         <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">
-          Google Drive API — read-only (<code className="text-sm">auth/drive.readonly</code>)
+          Google Drive API — per-file access (<code className="text-sm">auth/drive.file</code>)
         </h3>
         <p>
-          We use the Drive API in read-only mode solely to call{" "}
-          <code className="text-sm">drive.files.list</code> filtered to{" "}
-          <code className="text-sm">mimeType=&apos;application/vnd.google-apps.presentation&apos;</code>{" "}
-          so we can display a list of your existing slide decks for you to
-          select and edit. The Google Slides API cannot list or discover
-          presentations on its own — it requires a known presentation ID — so
-          the Drive API is the only way to let you browse your existing decks.
+          We use the <code className="text-sm">drive.file</code> scope, which
+          limits GlideDeck&apos;s access to only the files you explicitly choose
+          to share with us through Google&apos;s file picker. We cannot see or
+          access any other files in your Google Drive.
         </p>
         <p>
-          Through this scope we only read file metadata (name, ID, modified
-          date, and edit capability). We never download, read, or access the
-          contents of any files through the Drive API. We do not access files
-          of any type other than Google Slides presentations.
+          For the files you share, we read file metadata (name, ID, modified
+          date, and edit capability) so we can display them for you to select
+          and edit. The Google Slides API cannot list or discover presentations
+          on its own — it requires a known presentation ID — so the Drive API
+          is needed to let you browse your selected decks.
         </p>
 
         <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">
